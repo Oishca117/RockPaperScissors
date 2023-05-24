@@ -1,5 +1,6 @@
-function getComputerChoice(options) {
-    return options[Math.floor(Math.random() * options.length)];
+function getComputerChoice() {
+    const computerOptions = ['rock', 'paper', 'scissors'];
+    return computerOptions[Math.floor(Math.random() * computerOptions.length)];
 }
-const options = ['rock', 'paper', 'scissors'];
-console.log(getComputerChoice(options));
+console.log(getComputerChoice());
+
