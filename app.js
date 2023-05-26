@@ -28,10 +28,13 @@ function getComputerChoice() {
 
 }//end playRound */
 function game() {
+    const gameScore = 5;
     let playerScore = 0;
     let computerScore = 0;
 
-    for (playerScore = 0; playerScore < 5; ++playerScore) {
+    while (playerScore !== gameScore && computerScore !== gameScore) {
+        //prompt user for selection
+        //save input into playerSelection
         const playerSelection = prompt("Please enter a selection: ");
         //computerSelection will have a function call to get computers choice of r,p,s
         const computerSelection = getComputerChoice();
@@ -45,36 +48,24 @@ function game() {
             (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper")
         ) {
             console.log(`You win! ${playerSelection} beats ${computerSelection}!!`);
+            playerScore++;
         } else {
             console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
+            computerScore++;
         }
+        console.log(`Player: ${playerScore}   Computer: ${computerScore}`);
 
-    }//end playRound
+        if (playerScore === gameScore) {
+            console.log('Player wins!!');
+            break;
 
-    for (computerScore = 0; computerScore < 5; ++computerScore) {
-        const playerSelection = prompt("Please enter a selection: ");
-        //computerSelection will have a function call to get computers choice of r,p,s
-        const computerSelection = getComputerChoice();
-
-        //compare playerSelection with computerSelection to determine outcome of the game
-        if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
-            console.log("It's a tie!");
-        } else if (
-            (playerSelection.toLowerCase() === "rock" && computerSelection === "scissors") ||
-            (playerSelection.toLowerCase() === "paper" && computerSelection === "rock") ||
-            (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper")
-        ) {
-            console.log(`You win! ${playerSelection} beats ${computerSelection}!!`);
-        } else {
-            console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
+        } else if (computerScore === gameScore) {
+            console.log('Computer wins!!');
+            break;
         }
+    }//end while loop
 
-    }//end playRound
 
-    if (playerScore === 5) {
-        console.log("Player wins!");
-    } else (computerScore === 5)
-    console.log("Computer wins!");
 
 }
 
